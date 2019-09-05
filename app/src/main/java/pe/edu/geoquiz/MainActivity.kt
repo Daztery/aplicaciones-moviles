@@ -29,15 +29,22 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_next.setOnClickListener {
+
             position +=1
+            if(questions.size<position+1){
+                position =0
+            }
             showQuestion()
         }
 
         btn_back.setOnClickListener {
+
             position -=1
+            if(0>position){
+                position =questions.size-1
+            }
             showQuestion()
         }
-
 
     }
 
@@ -48,11 +55,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadQuestions() {
 
-        val question01 = Question("Es lima capital de Peru?",true)
+        val question01 = Question("¿Es lima la capital de Peru?",true)
         questions.add(question01)
 
-        val question02 = Question("Es lima capital de Chile?",false)
+        val question02 = Question("¿Es lima la capital de Chile?",false)
         questions.add(question02)
+
 
     }
 
